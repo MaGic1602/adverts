@@ -2,7 +2,6 @@ package com.cars.adverts.models;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -23,7 +22,7 @@ public class CarAdvert {
     @Min(message = "ID must be a positive number", value = 0)
     @Column(name = "id", nullable = false, unique = true)
     @NotNull(message="Field ID can not be empty")
-    private Integer id;
+    private Long id;
     @Column(name = "title", nullable = false)
     @NotNull(message="Field title can not be empty")
     private String title;
@@ -41,8 +40,6 @@ public class CarAdvert {
     private Integer mileage;
     @Column(name = "first_registration", nullable = true)
     private Date firstRegistration;
-
-
 
 
 }

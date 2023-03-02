@@ -48,9 +48,9 @@ public class CarController {
 
    //modifies an existing car advert
 @PutMapping(path="/adverts/{id}")
-    public CarAdvertDTO modifyCarAdvert(@PathVariable("id") Long carId, @RequestBody CarAdvertDTO carAdvertDTO){
-        carService.modifyCarAdvert(carAdvertDTO);
-return carAdvertDTO;
+    public Optional<CarAdvert> modifyCarAdvert(@PathVariable("id") Long carId, @RequestBody CarAdvertDTO carAdvertDTO){
+
+return carService.modifyCarAdvert(carAdvertDTO, carId);
 }
 
 @DeleteMapping(path="/adverts/{id}")

@@ -7,8 +7,8 @@ import com.cars.adverts.repositories.CarAdvertRepository;
 import jakarta.persistence.EntityNotFoundException;
 import lombok.AllArgsConstructor;
 
+
 import org.mapstruct.factory.Mappers;
-import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -53,11 +53,17 @@ public class CarService {
     }
 
     //modify an existing car advert
-    public CarAdvert modifyCarAdvert(CarAdvertDTO carAdvertDTO) {
-        CarAdvert carAdvert = carAdvertRepository.findById(carAdvertDTO.getId()).get();
+    public Optional<CarAdvert> modifyCarAdvert(CarAdvertDTO carAdvertDTO, Long carId) {
+        CarAdvert carAdvert = carAdvertRepository.findById(carId).get();
+        if(carAdvertDTO.getId()!=null)
+        {
+            carAdvertRepository.deleteById(carId);
+
+        }
         carAdvertMapper.updateCarAdvertFromDto(carAdvertDTO, carAdvert);
         carAdvertRepository.save(carAdvert);
-        return carAdvertRepository.findById(carAdvert.getId());
+        Long newCarId=carAdvert.getId();
+        return carAdvertRepository.findById(newCarId);
     }
 //delete car advert with given id
     public void deleteCarAdvert(Long carId) {
