@@ -1,0 +1,186 @@
+{
+	"info": {
+		"_postman_id": "24046e2d-adbd-45c1-9eb2-7f03171dce6e",
+		"name": "Adverts",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26130521"
+	},
+	"item": [
+		{
+			"name": "Car Adverts",
+			"item": [
+				{
+					"name": "GET car adverts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/car/adverts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"car",
+								"adverts"
+							],
+							"query": [
+								{
+									"key": "sortBy",
+									"value": "price",
+									"description": "Sort car adverts by price",
+									"disabled": true
+								},
+								{
+									"key": "sortBy",
+									"value": "id",
+									"description": "Sort car adverts by id",
+									"disabled": true
+								},
+								{
+									"key": "sortBy",
+									"value": "title",
+									"description": "Sort car adverts bytitle",
+									"disabled": true
+								},
+								{
+									"key": "sortBy",
+									"value": "fuelType",
+									"description": "Sort car adverts by fuelType",
+									"disabled": true
+								},
+								{
+									"key": "sortBy",
+									"value": "mileage",
+									"description": "Sort car adverts by mileage",
+									"disabled": true
+								},
+								{
+									"key": "sortBy",
+									"value": "firstRegistration",
+									"description": "Sort car adverts by firstRegistration",
+									"disabled": true
+								},
+								{
+									"key": "sortBy",
+									"value": "isNew",
+									"description": "Sort car adverts by isNew",
+									"disabled": true
+								},
+								{
+									"key": "sortBy",
+									"value": null,
+									"description": "Sort car adverts by id if value is not specified",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GET car advert by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/car/adverts/1888",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"car",
+								"adverts",
+								"1888"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST creates a new car advert",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": 1,\r\n    \"title\": \"Title for car advert 1\",\r\n    \"fuelType\": \"dizel\",\r\n    \"price\": 1000,\r\n    \"isNew\": false,\r\n    \"mileage\": 1250,\r\n    \"firstRegistration\": \"2014-05-05T00:00:00.000+00:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/car/adverts",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"car",
+								"adverts"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT modify an existing car advert",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"Title for car advert 1 updated\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/car/adverts/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"car",
+								"adverts",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE car advert with given id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/car/adverts/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"car",
+								"adverts",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
