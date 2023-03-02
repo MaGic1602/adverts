@@ -55,17 +55,16 @@ public class CarService {
     //modify an existing car advert
     public Optional<CarAdvert> modifyCarAdvert(CarAdvertDTO carAdvertDTO, Long carId) {
         CarAdvert carAdvert = carAdvertRepository.findById(carId).get();
-        if(carAdvertDTO.getId()!=null && carAdvertDTO.getId()>0)
-        {
-            carAdvertRepository.deleteById(carId);
-
-        }
-        else if(carAdvertDTO.getId()<0 ){
-            throw new RuntimeException("Id must be a positive number") ;
+        if (carAdvertDTO.getId() != null) {
+            if (carAdvertDTO.getId() > 0) {
+                carAdvertRepository.deleteById(carId);
+            } else {
+                throw new IllegalArgumentException("Id must be a positive number");
+            }
         }
         carAdvertMapper.updateCarAdvertFromDto(carAdvertDTO, carAdvert);
         carAdvertRepository.save(carAdvert);
-        Long newCarId=carAdvert.getId();
+        Long newCarId = carAdvert.getId();
         return carAdvertRepository.findById(newCarId);
     }
 //delete car advert with given id

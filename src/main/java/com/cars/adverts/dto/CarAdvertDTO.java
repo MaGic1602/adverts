@@ -1,5 +1,6 @@
 package com.cars.adverts.dto;
 
+import jakarta.annotation.Nullable;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,6 +8,7 @@ import java.util.Date;
 @Getter
 @Setter
 public class CarAdvertDTO {
+
     public Long id;
     public String title;
     public String fuelType;
@@ -14,4 +16,5 @@ public class CarAdvertDTO {
     public Boolean isNew;
     public Integer mileage;
     public Date firstRegistration;
+
 }
