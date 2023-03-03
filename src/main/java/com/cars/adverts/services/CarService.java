@@ -23,6 +23,7 @@ public class CarService {
     private CarAdvertMapper carAdvertMapper;
 
     CarAdvertMapper INSTANCE = Mappers.getMapper(CarAdvertMapper.class);
+
     //get all car adverts
     public List<CarAdvert> fetchCarAdvertList() {
         return carAdvertRepository.findAll();
@@ -30,7 +31,7 @@ public class CarService {
 
     //get all car adverts with sorting
     public List<CarAdvert> fetchCarAdvertList(String sortBy) {
-        return carAdvertRepository.findAll(Sort.by(Sort.Direction.DESC,sortBy));
+        return carAdvertRepository.findAll(Sort.by(Sort.Direction.DESC, sortBy));
     }
 
     //get car adverts by id
@@ -42,11 +43,9 @@ public class CarService {
 
     //save new car advert
     public CarAdvert saveCarAdvert(CarAdvert carAdvert) {
-        if(carAdvertRepository.existsById(carAdvert.getId().longValue()))
-        {
+        if (carAdvertRepository.existsById(carAdvert.getId().longValue())) {
             throw new RuntimeException("Entity with given id already exists");
-        }
-        else{
+        } else {
             return carAdvertRepository.save(carAdvert);
         }
 
@@ -67,13 +66,13 @@ public class CarService {
         Long newCarId = carAdvert.getId();
         return carAdvertRepository.findById(newCarId);
     }
-//delete car advert with given id
+
+    //delete car advert with given id
     public void deleteCarAdvert(Long carId) {
-       if(carAdvertRepository.existsById(carId)){
-           carAdvertRepository.deleteById(carId);
-       }
-       else {
-           throw new EntityNotFoundException("No car advert with given id was found.");
-       }
+        if (carAdvertRepository.existsById(carId)) {
+            carAdvertRepository.deleteById(carId);
+        } else {
+            throw new EntityNotFoundException("No car advert with given id was found.");
+        }
     }
 }

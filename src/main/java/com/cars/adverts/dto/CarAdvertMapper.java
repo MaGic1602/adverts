@@ -10,10 +10,12 @@ import org.mapstruct.factory.Mappers;
 
 @Mapper(componentModel = "spring")
 public interface CarAdvertMapper {
-CarAdvertMapper MAPPER =Mappers.getMapper(CarAdvertMapper.class);
+    CarAdvertMapper MAPPER = Mappers.getMapper(CarAdvertMapper.class);
+
     @BeanMapping(nullValuePropertyMappingStrategy = NullValuePropertyMappingStrategy.IGNORE)
     void updateCarAdvertFromDto(CarAdvertDTO carAdvertDTO, @MappingTarget CarAdvert carAdvert);
 
     CarAdvertDTO mapToCarAdvertDTO(CarAdvert carAdvert);
+
     CarAdvert mapToCarAdvert(CarAdvertDTO carAdvertDTO);
 }
